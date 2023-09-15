@@ -56,7 +56,7 @@
     var k = url.substr(url.lastIndexOf("k=")+2);
     debugger;
     if(k){
-    fetch(AS_URL_BASE + '?k=' + k, {headers: {'Origin': 'https://flamas37.github.io'}})
+    fetch(AS_URL_BASE + '?k=' + k)
       .then(r => r.text())
       .then((r) => {
         console.log(r);
