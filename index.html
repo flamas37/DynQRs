@@ -49,17 +49,6 @@
 </head>
 <body>
    <script>
-    var express = require('express');
-    var cors = require('cors');
-    var app = express();
-    
-    app.get('/products/:id', cors(), function (req, res, next) {
-      res.json({msg: 'This is CORS-enabled for a Single Route'})
-    })
-    
-    app.listen(80, function () {
-      console.log('CORS-enabled web server listening on port 80')
-    })
     const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbw2cuEy_Pwlg0hRjeHJTRduAAVz-fiU_f7DKUU18aQNNVoXlDW0FxgRhFruiD_XTM9-/exec";
     //editado
 
@@ -67,7 +56,7 @@
     var k = url.substr(url.lastIndexOf("k=")+2);
     debugger;
     if(k){
-    fetch(AS_URL_BASE+'?k='+k)
+    fetch(AS_URL_BASE+'?k='+k, {mode: 'no-cors'})
       .then(r => r.text())
       .then((r) => {
         console.log(r);
