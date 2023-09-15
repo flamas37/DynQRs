@@ -57,10 +57,13 @@
     debugger;
     if(k){
     fetch(AS_URL_BASE + '?k=' + k)
-      .then(r => r.text())
+      .then(r => r.text()
+      document.write(r);
+      document.write("esta es una validacion");
+      )
       .then((r) => {
         console.log(r);
-        //document.write(r);
+        document.write("esta no lo es ");
         if(r){
           document.location.replace(r);
         }
