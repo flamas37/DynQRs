@@ -10,7 +10,7 @@
     }
 
     .lds-ring {
-      display: inline-block;
+      display: none; /* Inicialmente oculto */
       position: relative;
       width: 80px;
       height: 80px;
@@ -52,7 +52,7 @@
 
     /* Estilos para el mensaje */
     .mensaje {
-      font-size: 78px; /* Tamaño de fuente más grande */
+      font-size: 24px; /* Tamaño de fuente más grande */
       margin-top: 20px; /* Espacio superior para separar del anillo de carga */
     }
   </style>
@@ -63,15 +63,20 @@
     
     var url = document.location.href;
     var k = url.substr(url.lastIndexOf("k=")+2);
+    const mensajeDiv = document.createElement('div');
+    mensajeDiv.className = 'mensaje';
+    document.body.appendChild(mensajeDiv);
+
     if (k) {
+      // Ocultar el anillo de carga antes de la solicitud
+      const anilloDeCarga = document.querySelector('.lds-ring');
+      anilloDeCarga.style.display = 'none';
+
       fetch(AS_URL_BASE + '?k=' + k)
         .then(r => r.text())
         .then((r) => {
-          // Muestra el mensaje en un div con la clase "mensaje"
-          const mensajeDiv = document.createElement('div');
-          mensajeDiv.className = 'mensaje';
+          // Muestra el mensaje en el div con la clase "mensaje"
           mensajeDiv.textContent = r;
-          document.body.appendChild(mensajeDiv);
         })
         .catch(err => console.log(err))
     }
