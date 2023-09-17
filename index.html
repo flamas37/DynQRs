@@ -56,6 +56,7 @@
       margin-top: 20px; /* Espacio superior para separar del anillo de carga */
       font-family: 'Comic Sans MS', cursive; /* Cambio de fuente a Comic Sans */
       color: red; /* Cambio de color a rojo */
+      white-space: pre-line; /* Mantener saltos de línea */
     }
   </style>
 </head>
@@ -74,8 +75,7 @@
         .then(r => r.text())
         .then((r) => {
           // Muestra el mensaje en el div con la clase "mensaje"
-          //mensajeDiv.textContent = r;
-          mensajeDiv.innerHTML = r.replace(/\n/g, '<br>');
+          mensajeDiv.textContent = r;
           // Oculta el anillo de carga después de mostrar el mensaje
           const anilloDeCarga = document.querySelector('.lds-ring');
           anilloDeCarga.style.display = 'none';
