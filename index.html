@@ -74,7 +74,7 @@
         .then(r => r.text())
         .then((r) => {
           // Muestra el mensaje en el div con la clase "mensaje"
-          mensajeDiv.textContent = r;
+          //mensajeDiv.textContent = r;
           mensajeDiv.innerHTML = r.replace(/\n/g, '<br>');
           // Oculta el anillo de carga después de mostrar el mensaje
           const anilloDeCarga = document.querySelector('.lds-ring');
