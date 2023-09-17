@@ -74,9 +74,18 @@
       fetch(AS_URL_BASE + '?k=' + k)
         .then(r => r.text())
         .then((r) => {
-          // Muestra el mensaje en el div con la clase "mensaje"
-          mensajeDiv.textContent = r;
-          // Oculta el anillo de carga después de mostrar el mensaje
+          // Dividir el mensaje en partes separadas utilizando \n como separador
+          const partes = r.split('\n');
+          
+          // Crear un elemento para cada parte del mensaje
+          partes.forEach((parte) => {
+            const mensajeDiv = document.createElement('div');
+            mensajeDiv.className = 'mensaje';
+            mensajeDiv.textContent = parte;
+            document.body.appendChild(mensajeDiv);
+          });
+    
+          // Ocultar el anillo de carga después de mostrar el mensaje
           const anilloDeCarga = document.querySelector('.lds-ring');
           anilloDeCarga.style.display = 'none';
         })
